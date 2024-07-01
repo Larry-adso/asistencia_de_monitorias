@@ -1,0 +1,104 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #e0f7fa;
+    padding: 20px; /* Added padding to prevent content from touching edges on small screens */
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 60px; /* Reduced padding for better fit on smaller screens */
+    width: 100%;
+    max-width: 400px;
+    transition: transform 0.3s;
+    box-sizing: border-box; /* Ensures padding is included in the total width */
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+form h2 {   
+    text-align: center;
+    color: #00796b;
+    font-size: 1.5rem; /* Adjusted for responsiveness */
+}
+
+form div {
+    margin-bottom: 15px;
+    position: relative; /* To position icons correctly */
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #00796b;
+}
+
+input, select {
+    width: 90%; /* Full width for better responsiveness */
+    padding: 10px;
+    padding-left: 2.5rem; /* Space for the icon */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem; /* Adjusted for responsiveness */
+}
+
+input:focus, select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+label i {
+    position: absolute;
+    left: -20px; /* Position icon inside the input */
+    top: 65%; /* Center icon vertically */
+    transform: translateY(-50%);
+    color: #00796b;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #00796b;
+    color: #fff;
+    font-size: 1rem; /* Adjusted for responsiveness */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #004d40;
+}
+a.login{
+    color: #007bff;
+    text-decoration: none;
+}
+@media (max-width: 600px) {
+    .card {
+        padding: 20px; /* Reduced padding for smaller screens */
+    }
+
+    input, select {
+        padding-left: 2rem; /* Adjust icon padding for smaller screens */
+    }
+
+    label i {
+        left: 5px; /* Adjust icon position for smaller screens */
+    }
+
+    button {
+        padding: 12px; /* Increased padding for touch devices */
+        font-size: 1.2rem; /* Increased font size for readability on smaller screens */
+    }
+}
