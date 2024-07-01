@@ -25,9 +25,11 @@ $area = $stmt->fetchAll(PDO::FETCH_ASSOC);
         .valid {
             color: green;
         }
+
         .invalid {
             color: red;
         }
+
         .hidden {
             display: none;
         }
@@ -41,7 +43,7 @@ $area = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <br>
             <h2>Registro de personas</h2>
             <div>
-                <label for="id"><i class="fa-solid fa-user"></i> Documento</label>
+                <label for="id"><i class="fa-solid fa-list-ol"></i> Documento</label>
                 <input type="text" id="id" name="id" placeholder="Ej.1109888654" required />
                 <span id="idFeedback" class="hidden"></span>
             </div>
@@ -78,7 +80,7 @@ $area = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </select>
             </div>
             <div>
-                <label for="tipoArea"><i class="fa-solid fa-users"></i> Tipo de area</label>
+                <label for="tipoArea"><i class="fa-solid fa-layer-group"></i></> Tipo de area</label>
                 <select id="tipoArea" name="id_area" required>
                     <option disabled selected>Elegir Area</option>
                     <?php foreach ($area as $areas) { ?>

@@ -75,7 +75,7 @@
     </div>
     <button class="login">Login </button>
     <div class="footer"><span><a style="text-decoration: none;" href="views/php/registro.php">Registro</a> 
-    </span><span>Forgot Password?</span></div>
+    </span><span><a style="text-decoration: none;" href="views/php/registro.php">Olvide mi contraseña</a></span></div>
   </div>
   </form>
   <!-- partial -->
