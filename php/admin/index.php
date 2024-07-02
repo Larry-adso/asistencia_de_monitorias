@@ -1,43 +1,83 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <title>Title</title>
-        <!-- Required meta tags -->
-        <meta charset="utf-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        />
+<?php
+include("../../includes/boostratp.php");
+include("../../conexion/conexion.php");
+include("manu.php");
 
-        <!-- Bootstrap CSS v5.2.1 -->
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-            crossorigin="anonymous"
-        />
-    </head>
+$sql = "SELECT * FROM tareas";
+$stmt = $conexion->prepare($sql);
+$stmt->execute();
+$tareas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+<!DOCTYPE html>
+<html lang="es">
 
-    <body>
-        <header>
-            <!-- place navbar here -->
-        </header>
-        <main>
-        </main>
-        <footer>
-            <!-- place footer here -->
-        </footer>
-        <!-- Bootstrap JavaScript Libraries -->
-        <script
-            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-            crossorigin="anonymous"
-        ></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Lista de Tareas</title>
 
-        <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-            crossorigin="anonymous"
-        ></script>
-    </body>
+    <!-- Incluye el CSS de Bootstrap -->
+    <link rel="stylesheet" href="../../css/index_admin.css">
+
+    <!-- Incluye jQuery y Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            $('#task-table').DataTable();
+        });
+    </script>
+</head>
+
+<body>
+  
+
+    <main class="container mt-4">
+        <section id="task-list">
+            <h2>Tareas en Proceso</h2>
+            <table id="task-table" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tarea</th>
+                        <th>Ruta Documento</th>
+                        <th>ID Monitor</th>
+                        <th>Horas</th>
+                        <th>Fecha Fin</th>
+                        <th>ID Estado</th>
+                        <th>Calificar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($tareas as $tarea) { ?>
+                        <tr>
+                            <td><?php echo $tarea['id']; ?></td>
+                            <td><?php echo $tarea['tarea']; ?></td>
+                            <td><?php echo $tarea['ruta_doc']; ?></td>
+                            <td><?php echo $tarea['id_monitor']; ?></td>
+                            <td><?php echo $tarea['horas']; ?></td>
+                            <td><?php echo $tarea['Fecha_fin']; ?></td>
+                            <td><?php echo $tarea['id_estado']; ?></td>
+                            <td>
+                                <?php if ($tarea['id_estado'] == 7) { ?>
+                                    <a class="btn btn-danger btn-block mb-2" href="#" role="button">Rechazar</a>
+                                    <a class="btn btn-primary btn-block" href="#" role="button">Aceptar</a>
+                                <?php } else { ?>
+                                    <a name="" id="" class="btn btn-success" role="button">Sin novedad</a>
+                                <?php } ?>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer class="bg-light text-center py-3 mt-4">
+        <p>&copy; 2024 Mi Lista de Tareas</p>
+    </footer>
+</body>
+
 </html>
